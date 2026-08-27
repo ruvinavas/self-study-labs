@@ -1,0 +1,204 @@
+<style>
+.avatar-wrap { 
+    position:relative;
+    width:64px;
+    height:64px;
+}
+.avatar-wrap img{
+    width:64px;
+    height:64px;
+    border-radius: 10px;
+}
+
+.badge {
+    position:absolute;
+    top: -2px;
+    right: -2px;
+    background-color: red;
+    color:white;
+    
+    padding: 2px;
+    border-radius: 50%;
+
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header {
+    position: sticky;
+    top:0;
+    background-color: bisque;
+    text-align: center  ;
+}
+.list{
+    font-size: larger;
+}
+
+.button{
+    position: fixed;
+    bottom:20px;
+    right: 20px;
+    width: 56px;
+    height: 56px;
+    background-color: rgb(130, 86, 27);
+    color: white;
+    
+    border-radius: 50%;
+    cursor: pointer;
+}
+.card-area{
+    position: relative;
+    height: 120px;
+}
+.card1,.card2 {
+    position: absolute;
+    border: 2px solid black;
+    width: 60px;
+    height: 60px;
+    margin: 2px;
+
+    display:flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.card1 {
+    top: 10px;
+    left: 20px;
+    z-index: 2;
+    background-color: rgb(160, 205, 205);
+}
+
+.card2 {
+    top: 20px;
+    left: 60px;
+    z-index: 10;
+    background-color: aquamarine;
+}
+
+.wrapper{
+    transform: scale(1);
+}
+
+.dropdown-card {
+            position: relative;
+
+            width: 300px;
+            height: 120px;
+
+            border: 3px solid #333;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        .dropdown-button {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .menu {
+            position: absolute;
+            top: 65px;
+            left: 20px;
+
+            width: 200px;
+            height: 180px;
+
+            background-color: white;
+
+            border: 2px solid black;
+
+            padding: 15px;
+
+            z-index: 10;
+        }
+
+        .menu div {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+
+</style>
+
+<div class="avatar-wrap">
+    <img src="https://www.shareicon.net/data/2016/07/05/791221_man_512x512.png">
+    <div class="badge">3</div>
+</div>
+<div>
+    <h1 class="header">Items</h1>
+       <ol class="list">
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+  <li>Item 4</li>
+  <li>Item 5</li>
+  <li>Item 6</li>
+  <li>Item 7</li>
+  <li>Item 8</li>
+  <li>Item 9</li>
+  <li>Item 10</li>
+  <li>Item 11</li>
+  <li>Item 12</li>
+  <li>Item 13</li>
+  <li>Item 14</li>
+  <li>Item 15</li>
+  <li>Item 16</li>
+  <li>Item 17</li>
+  <li>Item 18</li>
+  <li>Item 19</li>
+  <li>Item 20</li>
+  <li>Item 21</li>
+  <li>Item 22</li>
+  <li>Item 23</li>
+  <li>Item 24</li>
+  <li>Item 25</li>
+  <li>Item 26</li>
+  <li>Item 27</li>
+  <li>Item 28</li>
+  <li>Item 29</li>
+  <li>Item 30</li>
+  <li>Item 31</li>
+  <li>Item 32</li>
+  <li>Item 33</li>
+  <li>Item 34</li>
+  <li>Item 35</li>
+  <li>Item 36</li>
+  <li>Item 37</li>
+  <li>Item 38</li>
+  <li>Item 39</li>
+  <li>Item 40</li>
+</ol> 
+</div>
+</div>
+<button class="button">Click</button>
+
+<section class="card-area">
+<div class="card1">
+    Card 1
+</div>
+<div class="wrapper">
+<div class="card2">
+    Card 2
+</div> </div>
+</section>
+
+ <section class="exercise">
+        <div class="dropdown-card">
+            <button class="dropdown-button">Open Menu</button>
+
+            <div class="menu">
+                <div>Menu item 1</div>
+                <div>Menu item 2</div>
+                <div>Menu item 3</div>
+                <div>Menu item 4</div>
+                <div>Menu item 5</div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
