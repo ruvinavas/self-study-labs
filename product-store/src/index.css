@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+@theme {
+    --font-display:"Caacupe One",sans-serif;
+    --font-body:"Smooch Sans",sans-serif;
+}
+
+body {
+    @apply font-body text-slate-800
+}
