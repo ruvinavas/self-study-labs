@@ -108,8 +108,6 @@ export default function ProductsPage() {
       {loading && (
         <StateBlock type="loading" />
       )}
-
-
       {!loading && error && (
         <StateBlock
           type="error"
@@ -117,8 +115,6 @@ export default function ProductsPage() {
           onRetry={fetchProducts}
         />
       )}
-
-
       {!loading && !error && sortedProducts.length === 0 && (
         <StateBlock type="empty" />
       )}
@@ -136,10 +132,7 @@ export default function ProductsPage() {
 
         </div>
       )}
-
-
       <BackToTop />
-
     </div>
   )
 }
