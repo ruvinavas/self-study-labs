@@ -1,43 +1,63 @@
-import { useState } from 'react'
-import Modal from './components/Modal'
+import { Navigate, Route, Routes } from 'react-router-dom'
 
-function App() {
+import RootLayout from './layouts/RootLayout'
 
-  const [isOpen, setIsOpen] = useState(false)
+import ProductsPage from './pages/ProductsPage'
+import ProductDetailPage from './pages/ProductDetailPage'
+import CartPage from './pages/CartPage'
+import AdminPage from './pages/AdminPage'
+import NotFoundPage from './pages/NotFoundPage'
 
-  return (
-    <div className="min-h-screen bg-slate-100 p-8">
 
-      <h1 className="font-display text-4xl font-bold">
-        Product Store
-      </h1>
 
-      <button
-        onClick={() => setIsOpen(true)}
-        className="mt-8 rounded-lg bg-teal-700 px-5 py-3 text-white hover:bg-teal-800"
-      >
-        Open Modal
-      </button>
-
-      <Modal
-        isOpen={isOpen}
-        onClose={() => setIsOpen(false)}
-        title="Welcome"
-      >
-        <p className="text-slate-700">
-          This is my reusable modal component.
-        </p>
-
-        <button
-          onClick={() => setIsOpen(false)}
-          className="mt-5 rounded-lg bg-teal-700 px-4 py-2 text-white"
-        >
-          Close
-        </button>
-      </Modal>
-
-    </div>
-  )
+const isAdmin = false
+function RequireAdmin({ children }) {
+  if (!isAdmin) {
+    return <Navigate to="/products" replace />
+  }
+  return children
 }
 
-export default App
+
+export default function App() {
+  return (
+    <Routes>
+
+      <Route element={<RootLayout />}>
+        <Route
+          path="/"
+          element={<Navigate to="/products" replace />}
+        />
+
+
+        <Route
+          path="/products"
+          element={<ProductsPage />}
+        />
+
+        <Route
+          path="/products/:id"
+          element={<ProductDetailPage />}
+        />
+
+        <Route
+          path="/cart"
+          element={<CartPage />}
+        />
+
+
+        <Route
+          path="/admin"
+          element={ <RequireAdmin>
+              <AdminPage />
+            </RequireAdmin>
+          }
+        />
+
+        <Route path="*" element={<NotFoundPage />}
+        />
+
+      </Route>
+    </Routes>
+  )
+}
