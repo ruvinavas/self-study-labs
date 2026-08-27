@@ -7,6 +7,7 @@ import ProductDetailPage from './pages/ProductDetailPage'
 import CartPage from './pages/CartPage'
 import AdminPage from './pages/AdminPage'
 import NotFoundPage from './pages/NotFoundPage'
+import KeyDemoPage from './pages/KeyDemoPage'
 
 
 
@@ -56,6 +57,8 @@ export default function App() {
 
         <Route path="*" element={<NotFoundPage />}
         />
+
+        <Route path="/key-demo" element={<KeyDemoPage/>}></Route>
 
       </Route>
     </Routes>
