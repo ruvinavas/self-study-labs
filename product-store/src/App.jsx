@@ -1,44 +1,43 @@
-import {ShoppingCart,Search,Star,Boxes} from "lucide-react";
+import { useState } from 'react'
+import Modal from './components/Modal'
 
 function App() {
+
+  const [isOpen, setIsOpen] = useState(false)
+
   return (
-    <div className="min-h-screen p-8">
+    <div className="min-h-screen bg-slate-100 p-8">
 
-      <div className="flex items-center gap-2 text-teal-700">
-        <Boxes size={26} />
-
-        <span className="font-display text-xl font-bold tracking-tight">My Store</span>
-      </div>
-
-      <h1 className="font-display text-4xl font-bold tracking-tight">
+      <h1 className="font-display text-4xl font-bold">
         Product Store
       </h1>
 
-      <div className="mt-8 grid  lg:grid-cols-3 grid-cols-1 md:grid-cols-2  gap-6">
+      <button
+        onClick={() => setIsOpen(true)}
+        className="mt-8 rounded-lg bg-teal-700 px-5 py-3 text-white hover:bg-teal-800"
+      >
+        Open Modal
+      </button>
 
-        <button className="flex items-center gap-2 text-slate-700 hover:text-teal-700">
-          <ShoppingCart size={20} />
-          <span>Cart</span>
+      <Modal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        title="Welcome"
+      >
+        <p className="text-slate-700">
+          This is my reusable modal component.
+        </p>
+
+        <button
+          onClick={() => setIsOpen(false)}
+          className="mt-5 rounded-lg bg-teal-700 px-4 py-2 text-white"
+        >
+          Close
         </button>
-
-        <button className="flex items-center gap-2 text-slate-700 hover:text-teal-700">
-          <Search size={20} />
-          <span>Search</span>
-        </button>
-
-        <button className="flex items-center gap-2 text-slate-700 hover:text-teal-700">
-          <Star size={20} />
-          <span>Rating</span>
-        </button>
-
-      </div>
-
-      <p className="mt-8 text-lg leading-relaxed">
-        Browse our collection of products.
-      </p>
+      </Modal>
 
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
