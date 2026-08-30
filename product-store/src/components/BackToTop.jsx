@@ -1,30 +1,20 @@
 import { useEffect, useState } from 'react'
 import { ArrowUp } from 'lucide-react'
+import { useScrollPosition } from '../hooks/useScrollPositions'
 
 export default function BackToTop() {
   const [showButton, setShowButton] = useState(false)
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setShowButton(window.scrollY > 400)
-    }
+  if (scrollY<400){
+    return null
+  }
 
-    window.addEventListener('scroll', handleScroll)
 
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
-
-  const scrollToTop = () => {
+  const goToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
     })
-  }
-
-  if (!showButton) {
-    return null
   }
 
   return (
