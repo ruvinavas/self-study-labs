@@ -7,6 +7,7 @@ import StateBlock from '../components/StateBlock'
 import useCartStore from '../store/useCartStore'
 
 import { formatPrice } from '../utils/format'
+import { useFetch } from '../hooks/useFetch'
 
 export default function ProductDetailPage() {
   const { id } = useParams()

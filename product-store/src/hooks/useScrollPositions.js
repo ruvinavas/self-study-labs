@@ -1,19 +1,22 @@
-import { useState, useCallback } from "react";
+import { useState, useEffect } from 'react'
 
-export function useToggle(initial=false){
-    const [value,setValue]=useState(initial)
+export function useScrollPosition() {
+  const [scrollY, setScrollY] = useState(0)
 
-    const toggle=useCallback(()=>{
-        setValue((v)=>!v)
-    },[])
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY)
+    }
 
-    const setTrue=useCallback(()=>{
-        setValue(true)
-    },[])
+    window.addEventListener('scroll', handleScroll)
 
-    const setFalse=useCallback(()=>{
-        setValue(false)
-    },[])
+    return () => {
+      window.removeEventListener(
+        'scroll',
+        handleScroll
+      )
+    }
+  }, [])
 
-    return {value,toggle,setTrue,setFalse}
+  return scrollY
 }

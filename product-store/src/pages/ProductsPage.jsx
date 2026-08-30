@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 
 import api from '../api/axiosInstance'
@@ -69,8 +69,8 @@ export default function ProductsPage() {
   }, [])
 
 
-  const sortedProducts = useMemo(() => {
-    const sorted = [...products]
+  const sortedProducts =[...products].sort((a,b)=>{
+
 
     if (sort === 'price-asc') {
       sorted.sort((a, b) => a.price - b.price)
@@ -84,8 +84,8 @@ export default function ProductsPage() {
       sorted.sort((a, b) => b.rating - a.rating)
     }
 
-    return sorted
-  }, [products, sort])
+    return 0
+   })
 
 
   return (
