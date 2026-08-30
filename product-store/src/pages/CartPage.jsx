@@ -4,6 +4,7 @@ import { Minus, Plus, Trash2 } from 'lucide-react'
 
 import Modal from '../components/Modal'
 import useCartStore from '../store/useCartStore'
+import { formatPrice } from '../utils/format'
 
 export default function CartPage() {
   const items = useCartStore((state) => state.items)
@@ -54,8 +55,6 @@ export default function CartPage() {
       <h1 className="font-display text-3xl font-bold">
         Your Cart
       </h1>
-
-
       <div className="mt-6 space-y-4">
 
         {items.map((item) => (
@@ -77,7 +76,7 @@ export default function CartPage() {
               </h2>
 
               <p className="text-slate-500">
-                ${item.price} each
+                ${formatPrice(item.price)} each
               </p>
 
             </div>
@@ -109,7 +108,7 @@ export default function CartPage() {
 
 
             <p className="font-bold">
-              ${(item.price * item.quantity).toFixed(2)}
+              ${formatPrice((item.price * item.quantity).toFixed(2))}
             </p>
 
 
@@ -135,8 +134,6 @@ export default function CartPage() {
 
       </div>
 
-
-      {/* Remove confirmation */}
       <Modal
         isOpen={Boolean(itemToRemove)}
         onClose={() => setItemToRemove(null)}

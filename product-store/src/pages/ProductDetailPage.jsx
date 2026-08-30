@@ -6,6 +6,8 @@ import api from '../api/axiosInstance'
 import StateBlock from '../components/StateBlock'
 import useCartStore from '../store/useCartStore'
 
+import { formatPrice } from '../utils/format'
+
 export default function ProductDetailPage() {
   const { id } = useParams()
   const navigate = useNavigate()
@@ -64,8 +66,6 @@ export default function ProductDetailPage() {
 
 
       <div className="grid gap-8 md:grid-cols-2">
-
-        {/* Images */}
         <div>
 
           <img
@@ -93,9 +93,6 @@ export default function ProductDetailPage() {
           </div>
 
         </div>
-
-
-        {/* Product information */}
         <div>
 
           <h1 className="font-display text-3xl font-bold">
@@ -121,7 +118,7 @@ export default function ProductDetailPage() {
           </div>
 
           <p className="mt-5 text-2xl font-bold">
-            ${product.price}
+            ${formatPrice(product.price)}
           </p>
 
           <p className="mt-2 text-slate-600">

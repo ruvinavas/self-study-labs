@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { ShoppingCart, Star } from 'lucide-react'
 import useCartStore from '../store/useCartStore'
+import { formatPrice, getDiscountedPrice } from '../utils/format'
 
 export default function ProductCard({ product }) {
   const addItem = useCartStore((state) => state.addItem)
@@ -41,21 +42,40 @@ export default function ProductCard({ product }) {
           {product.brand || 'No brand'}
         </p>
 
-        <div className="mt-3 flex items-center justify-between">
+        
+        <div className="mt-3">
           <span className="font-bold">
-            ${product.price}
+            {formatPrice(getDiscountedPrice(product))}
           </span>
 
-          <div className="flex items-center gap-1">
-            <Star
-              size={16}
-              className="text-yellow-500"
-              fill="currentColor"
-            />
-            <span>{product.rating}</span>
-          </div>
+          {product.discountPercentage > 0 && (
+            <span className="ml-2 text-sm text-slate-400 line-through">
+              {formatPrice(product.price)}
+            </span>
+          )}
         </div>
 
+       
+        <div className="mt-2 flex">
+          {Array.from({ length: 5 }).map((_, index) => (
+            <Star
+              key={index}
+              size={16}
+              className={
+                index < Math.round(product.rating)
+                  ? 'text-yellow-500'
+                  : 'text-slate-300'
+              }
+              fill={
+                index < Math.round(product.rating)
+                  ? 'currentColor'
+                  : 'none'
+              }
+            />
+          ))}
+        </div>
+
+      
         <button
           onClick={handleAddToCart}
           className="mt-4 flex w-full items-center justify-center gap-2 rounded bg-teal-700 px-4 py-2 text-white hover:bg-teal-800"

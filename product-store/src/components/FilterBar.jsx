@@ -1,4 +1,5 @@
 import { useSearchParams } from 'react-router-dom'
+import { toTitleCase } from '../utils/format'
 
 export default function FilterBar({ categories }) {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -45,7 +46,7 @@ export default function FilterBar({ categories }) {
               key={item.slug}
               value={item.slug}
             >
-              {item.name}
+              {toTitleCase(item.name)}
             </option>
           ))}
         </select>
