@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { X } from 'lucide-react'
+import { useToggle } from '../hooks/useToggle'
 
 export default function Modal({ isOpen, onClose, title, children }) {
   // close on Escape

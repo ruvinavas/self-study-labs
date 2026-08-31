@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { ShoppingCart, Star } from 'lucide-react'
 import useCartStore from '../store/useCartStore'
 import { formatPrice, getDiscountedPrice } from '../utils/format'
+import Button from './Button'
 
 export default function ProductCard({ product }) {
   const addItem = useCartStore((state) => state.addItem)
@@ -14,16 +15,12 @@ export default function ProductCard({ product }) {
   }
 
   return (
-    <Link
-      to={`/products/${product.id}`}
-      className="group overflow-hidden rounded-lg bg-white shadow"
-    >
+    <Link to={`/products/${product.id}`} className="group relative overflow-hidden rounded-lg bg-white shadow transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
+>
       <div className="relative">
-        <img
-          src={product.thumbnail}
-          alt={product.title}
-          className="h-56 w-full object-cover"
-        />
+        <img src={product.thumbnail}alt={product.title}
+  className="h-56 w-full object-cover transition-transform duration-300 group-hover:scale-105"
+/>
 
         {product.discountPercentage > 10 && (
           <span className="absolute left-3 top-3 rounded bg-red-500 px-2 py-1 text-sm text-white">
@@ -34,9 +31,7 @@ export default function ProductCard({ product }) {
 
       <div className="p-4">
 
-        <h2 className="truncate font-display text-lg font-bold">
-          {product.title}
-        </h2>
+        <h2 className="truncate font-display text-lg font-bold transition-colors duration-200 group-hover:text-teal-700">{product.title}</h2>
 
         <p className="mt-1 text-sm text-slate-500">
           {product.brand || 'No brand'}
@@ -53,6 +48,9 @@ export default function ProductCard({ product }) {
               {formatPrice(product.price)}
             </span>
           )}
+
+          <div className="absolute bottom-0 left-0 right-0 translate-y-full bg-black/60 p-2 transition-transform duration-300 group-hover:translate-y-0"><p className="text-center text-sm text-white">Quick add</p>
+</div>
         </div>
 
        
@@ -76,13 +74,13 @@ export default function ProductCard({ product }) {
         </div>
 
       
-        <button
+        <Button
           onClick={handleAddToCart}
           className="mt-4 flex w-full items-center justify-center gap-2 rounded bg-teal-700 px-4 py-2 text-white hover:bg-teal-800"
         >
           <ShoppingCart size={18} />
           Add to cart
-        </button>
+        </Button>
 
       </div>
     </Link>

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Minus, Plus, Trash2 } from 'lucide-react'
+import Button from '../components/Button'
 
 import Modal from '../components/Modal'
 import useCartStore from '../store/useCartStore'
@@ -112,13 +113,13 @@ export default function CartPage() {
             </p>
 
 
-            <button
+            <Button
               onClick={() => setItemToRemove(item)}
               className="text-red-600 hover:text-red-800"
               aria-label={`Remove ${item.title}`}
             >
               <Trash2 size={20} />
-            </button>
+            </Button>
 
           </div>
         ))}
@@ -153,12 +154,12 @@ export default function CartPage() {
             Cancel
           </button>
 
-          <button
+          <Button
             onClick={confirmRemove}
             className="rounded bg-red-600 px-4 py-2 text-white"
           >
             Remove
-          </button>
+          </Button>
 
         </div>
       </Modal>
