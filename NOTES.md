@@ -17,3 +17,28 @@ The modal open and close state was something I could have put in Zustand, but I 
 
 ## 6. What I am least confident about
 I am still least confident about understanding stacking contexts. I also need more practice with React Router guards and understanding how the different routes and layouts work together.
+
+## Day-2 
+## 1 
+?? only gives the fallback when the value is null or undefined. In stockLabel, 0 is a valid stock value, so ?? correctly shows 0. If I used ||, it would treat 0 as false and wrongly show "Out of stock".
+
+## 2
+The reduce questions took me the longest, especially grouping by category. 
+
+## 3 
+If I sort the products state directly, the original state gets changed and React may not detect the change properly. Copying first with [...products].sort() gives a new array and keeps the original safe
+
+## 4
+a.price > b.price returns only true or false, not the negative/zero/positive value that sort() expects. My test showed that the array was only partially sorted and gave the wrong order.
+
+## 5
+I deleted 2 pieces of redundant state. One was the cart total because it could be calculated directly from the cart items using reduce().
+
+## 6
+I can now copy or a filtered URL and get the same results. Also, the filters stay after refreshing the page and the Back button works.
+
+## 7
+useFetch removed the most repeated code because loading, error, fetching and retry logic was being repeated.
+
+## 8
+Some of the more advanced URL and filter logic .
